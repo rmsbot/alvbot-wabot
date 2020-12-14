@@ -802,3 +802,162 @@ case 'filmanime':
            break
    }
 })
+// TAMBAHAN 
+
+} else if (msg.body == "!wait") {
+		const fs = require("fs");
+		const { exec } = require("child_process");
+		const chat = await msg.getChat();
+    	if (msg.hasMedia) {
+      		const attachmentData = await msg.downloadMedia();
+			fs.writeFileSync("example.jpg", attachmentData.data, {encoding: 'base64'}, function(err) {
+    		console.log('File created');
+		});
+		const fetch = require("node-fetch")
+		const imageToBase64 = require('image-to-base64');
+		let response = ''
+		imageToBase64("example.jpg") // you can also to use url
+    		.then(
+        	(response) => {
+		fetch("https://trace.moe/api/search", {
+  			method: "POST",
+  			body: JSON.stringify({ image: response}),
+  			headers: { "Content-Type": "application/json" }
+		})
+  			.then(res => res.json())
+  			.then(result =>  {
+		var teks = `
+What Anime Is That ?
+Echi / Tidak : *${result.docs[0].is_adult}*
+Judul Jepang : *${result.docs[0].title}*
+Ejaan Judul : *${result.docs[0].title_romaji}*
+Episode : *${result.docs[0].episode}*
+Season  : *${result.docs[0].season}*
+`;
+		var video = `https://trace.moe/preview.php?anilist_id=${result.docs[0].anilist_id}&file=${encodeURIComponent(result.docs[0].filename)}&t=${result.docs[0].at}&token=${result.docs[0].tokenthumb}`;
+		exec('wget "' + video + '" -O ./anime/anime.mp4', (error, stdout, stderr) => {
+
+		let media = MessageMedia.fromFilePath('./anime/anime.mp4');
+			client.sendMessage(msg.from, media, {
+			caption: teks });
+			if (error) {
+        		console.log(`error: ${error.message}`);
+        		return;
+    		}
+    		if (stderr) {
+        		console.log(`stderr: ${stderr}`);
+        		return;
+    		}
+
+    		console.log(`stdout: ${stdout}`);
+		});
+ 	});
+ 		}
+    		)
+    		.catch(
+        		(error) => {
+            		console.log(error); //Exepection error....
+        		}
+    		)
+
+			}
+		else{
+				const tutor = MessageMedia.fromFilePath('tutor.jpeg');
+
+				client.sendMessage(msg.from, tutor, {
+        		caption: "Kirim gambar dengan caption *!wait* \n sesuai gambar diatas lalu tunggu sampai \n kita menemukan hasilnya"
+      		});
+	  		}
+	} else if (msg.body.startsWith("!nh ")) {
+		const kode = msg.body.split(" ")[1];
+		const NanaAPI = require("nana-api");
+		const nana = new NanaAPI();
+		const https = require("https");
+		const fs = require("fs");
+		const { exec } = require("child_process");
+
+		// Get gallery from book ID or book link
+		nana.g(kode).then((g) => {
+		if (g == 'Book not found!'){
+			msg.reply("Kode nuklir nya salah , coba perhatiin lagi")
+		}else{
+			var url = "https://t.nhentai.net/galleries/"+ g.media_id +"/cover.jpg"
+
+			exec('wget "' + url + '" -O ./hentai/cover.jpg', (error, stdout, stderr) => {
+ 			var teks = "Judul English  : "+ g.title.english.slice("0") +" \n \n Judul Japanese : "+ g.title.japanese +"\n \n Judul Pendek   : "+ g.title.pretty +"\n \n Kode Nuklir    : "+ g.id +" \n ";
+
+		let media = MessageMedia.fromFilePath('./hentai/cover.jpg');
+			client.sendMessage(msg.from, media, {
+			caption: teks });
+			if (error) {
+        		console.log(`error: ${error.message}`);
+        		return;
+    		}
+    		if (stderr) {
+        		console.log(`stderr: ${stderr}`);
+        		return;
+    		}
+
+    		console.log(`stdout: ${stdout}`);
+		});
+	}
+})
+} else if (msg.body.startsWith("!doujinshi ")) {
+		const kode = msg.body.split(" ")[1];
+		const NanaAPI = require("nana-api");
+		const nana = new NanaAPI();
+		const https = require("https");
+		const fs = require("fs");
+		const { exec } = require("child_process");
+
+		// Get gallery from book ID or book link
+		nana.g(kode).then((g) => {
+		if (g == 'Book not found!'){
+			msg.reply("Kode nuklir nya salah , coba perhatiin lagi")
+		}else{
+			var url = "https://t.nhentai.net/galleries/"+ g.media_id +"/cover.jpg"
+			var dl = "https://hdl.rurafs.me/download/nhentai/"+ g.id;
+			var teks = "Judul English  : "+ g.title.english.slice("0") +" \n \n Judul Japanese : "+ g.title.japanese +"\n \n Judul Pendek   : "+ g.title.pretty +"\n \n Kode Nuklir    : "+ g.id +" \n \n Download Link : "+ dl+"";
+			//exec('nhentai --id=' + g.id + ' -P mantap.pdf -o ./ --format=hentong/'+ g.id, (error, stdout, stderr) => {
+			exec('wget "' + dl + '" -O hentai/' + g.id + '.pdf', (error, stdout, stderr) => {
+				let media = new MessageMedia('application/pdf','hentai/'+ g.id +'/mantap.pdf');
+				client.sendMessage(media);
+				if (error) {
+	        		console.log(`error: ${error.message}`);
+        			return;
+				}
+	    		if (stderr) {
+        			console.log(`stderr: ${stderr}`);
+        			return;
+    			}
+
+    			console.log(`stdout: ${stdout}`);
+			});
+		}
+	}) 
+	} else if (msg.body == "!randomhentai") {
+		const cheerio = require('cheerio');
+		const request = require('request');
+		const { exec } = require("child_process");
+		request.get({
+  			headers: {'content-type' : 'application/x-www-form-urlencoded'},
+  			url:     'https://api.computerfreaker.cf/v1/nsfwneko',
+
+		},function(error, response, body){
+    		let $ = cheerio.load(body);
+    		var d = JSON.parse(body);
+		console.log(d.url);
+		exec('wget "' + d.url + '" -O ./hentai/ok.jpg', (error, stdout, stderr) => {
+			var media = MessageMedia.fromFilePath('./hentai/ok.jpg');
+			chat.sendMessage(media);
+			if (error) {
+        		console.log(`error: ${error.message}`);
+        		return;
+    		}
+    		if (stderr) {
+        		console.log(`stderr: ${stderr}`);
+        		return;
+    		}
+    		console.log(`stdout: ${stdout}`);
+		});
+	});
