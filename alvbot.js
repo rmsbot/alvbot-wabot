@@ -802,7 +802,11 @@ case 'filmanime':
            break
    }
 })
+
+
 // TAMBAHAN 
+
+
 
 } else if (msg.body == "!wait") {
 		const fs = require("fs");
