@@ -803,11 +803,6 @@ case 'filmanime':
    }
 })
 
-
-// TAMBAHAN 
-
-
-
 } else if (msg.body == "!wait") {
 		const fs = require("fs");
 		const { exec } = require("child_process");
