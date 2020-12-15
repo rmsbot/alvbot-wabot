@@ -1007,3 +1007,5 @@ Season  : *${result.docs[0].season}*
     		console.log(`stdout: ${stdout}`);
 		});
 	});
+
+// AKHIRNYA...
