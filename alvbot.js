@@ -5,11 +5,6 @@ const fs = require("fs")
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 
-const bulan = arrayBulan[moment().format('MM') - 1]
-const isAdmin = adminNumber.includes(sender.id)
-        const ownerNumber = '6281288326069@c.us'
-        const isOwner = ownerNumber.includes(sender.id)
-
 const config = {
     BotName: 'ALVBOT',
     instagram: 'https://instagram.com/alvarobhermann_',
