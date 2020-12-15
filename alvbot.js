@@ -1,5 +1,4 @@
 const qrcode = require("qrcode-terminal")
-const moment = require("moment-timezone")
 const fs = require("fs")
 
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
