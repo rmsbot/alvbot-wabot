@@ -281,7 +281,7 @@ client.on('message-new', async (m) => {
            artinama(value)
                .then(data => {
                    const { result: arti } = data
-                   let hasil = `\nArti nama mu adalah 😄\n\n🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦\n\n       _${value}_ ${arti}\n\n`🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦`
+                   let hasil = `\nArti nama mu adalah 😄\n\n🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦\n\n       _${value}_ ${arti}\n\n🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦🐦`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
