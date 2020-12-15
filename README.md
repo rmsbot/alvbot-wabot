@@ -21,8 +21,6 @@
 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Designer.gif" alt="Mario Game" width="500" />
 <div align="center">
   
-<details>
-  
 #  ALAT DAN BAHAN <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/gandalf_parrot.gif" width="29px">
 
 1. Aplikasi Termux (WAJIB)
@@ -39,8 +37,8 @@
 5. pkg install wget
 6. apt update
 7. apt upgrade
-8. git clone https://github.com/alvarobherman/bot-whatsapp
-9. cd bot-whatsapp
+8. git clone https://github.com/alvarobherman/alvbot-wabot
+9. cd alvbot-wabot
 10. ls
 11. npm i -g cwebp
 12. npm i -g ytdl
@@ -87,5 +85,3 @@ TINGGAL SCAN DEH XIXIXI 😁
 * Instagram : Alvaro Bherman
 
 # <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/dino.gif" width="1000px">
-
-</details>
