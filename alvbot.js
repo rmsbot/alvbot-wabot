@@ -850,7 +850,7 @@ case '!ngeread':
                 tobz.reply(from, `Maaf, Belum Ada Yang Membaca Pesan nya`, id)    
             }
             break
-} else if (msg.body == "!wait") {
+        } else if (msg.body == "!wait") {
 		const fs = require("fs");
 		const { exec } = require("child_process");
 		const chat = await msg.getChat();
