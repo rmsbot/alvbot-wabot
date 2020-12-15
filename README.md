@@ -52,8 +52,23 @@ TINGGAL SCAN DEH XIXIXI 😁
 
 # FITUR <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Medal.gif" width="29px">
 
-| cek | tekotek
-
+| ALVBOT     |                   Feature        |
+| :-----------: | :------------------------------: |
+|       ✅       | Sticker Creator                  |
+|       ✅       | Nulis                            |
+|       ✅       | Covid (new)                      |
+|       ✅       | Alay (new)                       |
+|       ✅       | Lirik (new)                      |
+|       ✅       | Foto Anime                       |
+|       ✅       | Foto cewek/cowok (new)           |
+|       ✅       | Pantun                           |
+|       ✅       | Youtube Downloader               |
+|       ✅       | Quotes                           |
+|       ✅       | Nama (new)                       |
+|       ✅       | Foto Anime                       |
+|       ✅       | Pasangan (new)                   |
+|       ✅       | 18+                              |
+|       ✅       | Grup Menu                        |
                      AND MORE >//<
 
 # DONASI <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
